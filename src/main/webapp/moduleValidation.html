@@ -1,0 +1,63 @@
+<div class="container-fluid dashboard-content ">
+					<!-- ============================================================== -->
+					<!-- pageheader  -->
+					<!-- ============================================================== -->
+					<div class="row">
+						<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+							<div class="page-header">
+								<label class="pageheader-title" style="font-size: 16px;font-weight: bold;">Module validation
+								</label>
+							
+								
+							</div>
+						</div>
+					</div>
+					<!-- ============================================================== -->
+					<!-- end pageheader  -->
+					<!-- ============================================================== -->
+					<div class="ecommerce-widget">
+
+						<div class="row">
+							
+							
+						</div>
+						
+							<!-- ============================================================== -->
+
+							<!-- ============================================================== -->
+
+							<!-- recent orders  -->
+							<!-- ============================================================== -->
+							<div class="row">
+									<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+									<div class="card">
+                                <h5 class="card-header">Modules</h5>
+                                <div class="card-body">
+                                    <table class="table table-striped">
+                                        <thead>
+                                            <tr>
+                                                <th scope="col">Sr.no.</th>
+                                                <th scope="col">Module Name</th>
+                                                <th scope="col">Module Owner</th>
+                                                <th scope="col">Module Purpose</th>                                              
+                                                <th scope="col"></th>
+                                               
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr ng-repeat ="module in moduleDataObj">
+                                                <th scope="row">{{$index+1}}</th>
+                                                <td>{{module.bean.module_name}}</td>
+                                                <td>{{module.bean.mod_owner}}</td>
+                                                <td>{{module.bean.mod_purpose}}</td>                                              
+                                               <td><form id="{{'form'+$index}}"  method="post" action=""><input type="text" style="display:none" name="username" ng-model="username"/> <input type="text" name="password" style="display:none" ng-model="password"/> <input type="submit"   value="Visit Site"  class="btn btn-primary"  autocomplete="off">	</form> </td>                                                
+                                            </tr>                                            
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            </div>
+									</div>							
+						</div>						
+					
+				</div>

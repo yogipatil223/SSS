@@ -1,0 +1,48 @@
+@charset "ISO-8859-1";
+.required:after {
+    content:" *";
+    color: red;
+  }
+  
+  .imgcontainer {
+    text-align: center;
+    margin: 5px 0 5px 0;
+  }
+  
+  .lmhpolicelogo{  
+   width: 112px; 
+   height: 89px;
+  }
+  .lradioLabel{
+  font-size: 15px;
+  }
+  .lsendOtp{
+  height: 36px; font-size: 16px; background: #c3bd91; border-color: #c3bd91; color: white; width: 186px;border-color:#5a7fc9;
+  }
+  .loginBtn{
+  background-color: #5a7fc9; border-color: #0e0c28; height: 36px; font-size: 16px;border-color:#5a7fc9;
+  
+  }
+ 
+  .lforgetBtn{
+  background: #c3bd91; border-color: #c3bd91; color: white; margin-bottom: 12px; height: 36px; font-size: 16px; width: 188px;border-color:#5a7fc9;
+  }
+  
+  .lsshead{
+  margin-bottom: 20px; text-align: center; font-size: 50px; border: 2px solid; background: #5a7fc9; color: white;
+  }
+  .llogbtmMargin{
+  margin-bottom: 16px;
+  }
+  
+  .lborder{
+  border-width: 2px;
+   /*  border-color: #5a7fc9; */
+  }
+  /* ------ for register page */
+  
+  .rbox{
+   border: 1px solid #5a7fc9; width: 21%; padding: 15px;margin: auto;  margin-top: 9%;
+  }
+  
+  /* ----------- */

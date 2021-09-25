@@ -1,0 +1,582 @@
+<div class="container-fluid dashboard-content ">
+					<!-- ============================================================== -->
+					<!-- pageheader  -->
+					<!-- ============================================================== -->
+					<div class="row">
+						<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+							<div class="page-header">
+								<label class="pageheader-title" style="font-size: 16px;font-weight: bold;color:white;">Entry Update Report
+								</label>															
+							</div>
+						</div>
+					</div>
+					<!-- ============================================================== -->
+					<!-- end pageheader  -->
+					<!-- ============================================================== -->
+					<div class="ecommerce-widget">
+
+						<div class="row">
+							
+							
+						</div>
+						<div class="row">
+							<!-- ============================================================== -->
+
+							<!-- ============================================================== -->
+
+							<!-- recent orders  -->
+							<!-- ============================================================== -->
+							<div class="col-xl-12 col-lg-12 col-md-6 col-sm-12 col-12">
+								<div class="card" style = "padding : 30px;" >
+								 
+								 <div class="row">
+								 
+									<div class="col-xl-3 col-lg-3 col-md-3 ">
+											<div class="form-group">
+                                                <label  class="col-form-label">Select Module:</label>
+                                                <!-- <input type="text" name="username" ng-model="username" textaccept capitalize class="form-control"> -->
+                                                <select  name="moduleid" ng-model="moduleid"  ng-change="getDataByModId()"  class="form-control" >
+                                                <option value="">- - Select Module - -</option>
+                                                <option value="da">Disciplinary Action Entry</option>
+                                                 <option value="wa">Welfare Activity Entry</option>
+                                                 <option value="as">Armory Status Entry</option>
+                                                </select>
+                                            </div>
+										</div>
+										
+										<div ng-show="moduleid=='wa'" class="col-xl-3 col-lg-3 col-md-3 ">
+											<div class="form-group">
+                                                <label  class="col-form-label">Select Report </label>
+                                                <!-- <input type="text" name="username" ng-model="username" textaccept capitalize class="form-control"> -->
+                                                <select  name="reportType" ng-model="reportType"    class="form-control" >
+                                                <option value="">- - Select Report - -</option>
+                                                <option value="fund">Fund </option>
+                                                 <option value="scheme">Scheme </option>
+                                                 <option value="bank">Bank Detail</option>
+                                                 <option value="loan">Loan</option>
+                                                </select>
+                                            </div>
+										</div>
+										
+										<div ng-show="moduleid=='as'" class="col-xl-3 col-lg-3 col-md-3 ">
+											<div class="form-group">
+                                                <label  class="col-form-label">Select Report </label>
+                                                <!-- <input type="text" name="username" ng-model="username" textaccept capitalize class="form-control"> -->
+                                                <select  name="ArmsReportType" ng-model="ArmsReportType"    class="form-control" >
+                                                <option value="">- - Select Report - -</option>
+                                                <option value="arms">Arms </option>
+                                                 <option value="ammunition">Ammunitions </option>
+                                                 <option value="gas">Gas Ammunitions</option>
+                                                 
+                                                </select>
+                                            </div>
+										</div>
+										
+										<div  class="col-xl-3 col-lg-3 col-md-3 ">
+											<div class="form-group">
+                                                <label  class="col-form-label">Select Month </label>
+                                               <input type="month" ng-model="month" name="month" id="monthThis"   class="form-control">
+                                               
+                                            </div>
+										</div>
+										
+										<div class="col-xl-3 col-lg-3 col-md-3 ">
+											<div class="form-group" style="line-height: 105px;">
+											 <input type="button"  ng-click="getReport()"  style="background: #307ECC; border: #307ECC;color:white"  value="Get Report"  class="btn " autocomplete="off"> 
+                                                 
+                                               
+                                            </div>
+										</div>	
+								 </div>
+								 
+								 <div id="loader" style="text-align:center;">
+												<div class="lds-ring"><div></div><div></div><div></div><div></div></div>
+											</div>
+								
+									<div ng-show="moduleid=='da'" id="dvExcelData1">
+									<div class="row" style="margin-bottom:10px;">
+									<div class="col-xl-3 col-lg-3 col-md-3 col-12">
+									 <label  class="col-form-label">Select Unit </label>
+									<select ng-model="unitName" name="unitName" class="form-control" ng-change="setUnitName()" ng-options="obj.unitname as obj.unitname for obj in dispObj">	
+									<option value=""></option>										
+									</select>
+									
+									</div>
+									</div>
+									<div  class="row">
+									<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+									<div class="card">
+                                <h5 class="card-header">Disciplinary Action Entry Update Report</h5>
+                                <div class="card-body">
+                                    <table class="table table-striped">
+                                        <thead>
+                                            <tr>
+                                                <th scope="col">Sr.no.</th>
+                                                <th scope="col">Unit name </th>
+                                                <th scope="col">Record Updated Date </th>
+                                                <th scope="col">Update Status</th>
+                                                
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr ng-repeat ="obj in dispObj | filter : unitNames">
+                                                <th scope="row">{{$index+1}}</th>
+                                                <td>{{obj.unitname}}</td>
+                                                 <td>{{obj.created_on}}</td>
+                                                <td>{{obj.status}}</td>
+                                               
+                                            </tr>
+                                            
+                                        </tbody>
+                                    </table>
+                                    <div style="margin-top: 30px;"><span> Sevarth Id : {{sevarth_id}} / </span><span>Unit Name : {{unitnames}} / </span><span>Date : {{todayDate}}</span> </div>
+                                </div>
+                            </div>
+                            </div>
+									</div>
+									
+									<div>
+										<div>
+											<div style="text-align:center" >
+                                                         <div>                                                            
+                                                         </div>
+                                                        
+                                               </div>
+										</div>																											
+									</div>
+									
+																		
+									<div>
+										<div>
+											<div style="text-align:center" >
+                                                         <div ><a  href="x" download="down.xls"  id="btnExport1" class="btn btn-primary" style="background: #307ECC;">
+									                <span class="glyphicon glyphicon-cloud-download" aria-hidden="true"> </span>
+									                Export Excel
+									            </a>      
+									             <input type="button"   id="save" style="background: #307ECC; border: #307ECC;color:white" ng-click='printDiv(1)' id="print" value="Print"  class="btn " autocomplete="off">                                                       
+                                                         </div>
+                                                        
+                                               </div>
+										</div>																											
+									</div>
+									</div>
+									
+								<!-- 	-----------------fund related------------------------- -->
+								<div ng-show="reportType=='fund'" id="dvExcelData2">
+								<div class="row" style="margin-bottom:10px;">
+									<div class="col-xl-3 col-lg-3 col-md-3 col-12">
+									 <label  class="col-form-label">Select Unit </label>
+									<select ng-model="unitNameFund" name="unitNameFund" class="form-control" ng-change="setUnitNameFund()" ng-options="obj.unitname as obj.unitname for obj in fundObj">	
+									<option value=""></option>										
+									</select>
+									
+									</div>
+									</div>
+									<div  class="row">
+									<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+									<div class="card">
+                                <h5 class="card-header">Fund Related Welfare Activity Entry update Report</h5>
+                                <div class="card-body">
+                                    <table class="table table-striped">
+                                        <thead>
+                                            <tr>
+                                                <th scope="col">Sr.no.</th>
+                                                <th scope="col">Unit name </th>
+                                                <th scope="col">Record Updated Date </th>
+                                                <th scope="col">Update Status</th>
+                                                
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr ng-repeat ="obj in fundObj | filter:unitNameFunds">
+                                                <th scope="row">{{$index+1}}</th>
+                                                <td>{{obj.unitname}}</td>
+                                                 <td>{{obj.created_on}}</td>
+                                                <td>{{obj.status}}</td>
+                                               
+                                            </tr>
+                                            
+                                        </tbody>
+                                    </table>
+                                     <div style="margin-top: 30px;"><span> Sevarth Id : {{sevarth_id}} / </span><span>Unit Name : {{unitnames}} / </span><span>Date : {{todayDate}}</span> </div>
+                                </div>
+                            </div>
+                            </div>
+									</div>
+									
+									<div>
+										<div>
+											<div style="text-align:center" >
+                                                         <div ><a  href="x" download="down.xls"  id="btnExport2" class="btn btn-primary" style="background: #307ECC;">
+									                <span class="glyphicon glyphicon-cloud-download" aria-hidden="true"> </span>
+									                Export Excel
+									            </a>        
+									            <input type="button"   id="save" style="background: #307ECC; border: #307ECC;color:white" ng-click='printDiv(2)' id="print" value="Print"  class="btn " autocomplete="off">                                                     
+                                                         </div>
+                                                         
+                                               </div>
+										</div>																											
+									</div>
+									</div>
+									
+									<!-- 	-----------------bankDetail related------------------------- -->
+									<div ng-show="reportType=='bank'" id="dvExcelData3">
+									<div class="row" style="margin-bottom:10px;">
+									<div class="col-xl-3 col-lg-3 col-md-3 col-12">
+									 <label  class="col-form-label">Select Unit </label>
+									<select ng-model="unitNameBank" name="unitNameBank" class="form-control" ng-change="setUnitNameBank()" ng-options="obj.unitname as obj.unitname for obj in bankObj">	
+									<option value=""></option>										
+									</select>
+									
+									</div>
+									</div>
+									<div  class="row">
+									<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+									<div class="card">
+                                <h5 class="card-header">Bank Detail Related Entry Update Report</h5>
+                                <div class="card-body">
+                                    <table class="table table-striped">
+                                        <thead>
+                                            <tr>
+                                                <th scope="col">Sr.no.</th>
+                                                <th scope="col">Unit name </th>
+                                                 <th scope="col">Record Updated Date </th>
+                                                <th scope="col">Update Status</th>
+                                                
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr ng-repeat ="obj in bankObj | filter:unitNameBanks">
+                                                <th scope="row">{{$index+1}}</th>
+                                                <td>{{obj.unitname}}</td>
+                                                 <td>{{obj.created_on}}</td>
+                                                <td>{{obj.status}}</td>
+                                               
+                                            </tr>
+                                            
+                                        </tbody>
+                                    </table>
+                                     <div style="margin-top: 30px;"><span> Sevarth Id : {{sevarth_id}} / </span><span>Unit Name : {{unitnames}} / </span><span>Date : {{todayDate}}</span> </div>
+                                </div>
+                            </div>
+                            </div>
+									</div>
+									<div>
+										<div>
+											<div style="text-align:center" >
+                                                         <div ><a  href="x" download="down.xls"  id="btnExport3" class="btn btn-primary" style="background: #307ECC;">
+									                <span class="glyphicon glyphicon-cloud-download" aria-hidden="true"> </span>
+									                Export Excel
+									            </a>   
+									            <input type="button"   id="save" style="background: #307ECC; border: #307ECC;color:white" ng-click='printDiv(3)' id="print" value="Print"  class="btn " autocomplete="off">                                                          
+                                                         </div>
+                                                         
+                                               </div>
+										</div>																											
+									</div>
+									</div>
+										<!-- 	-----------------Loan related------------------------- -->
+										<div ng-show="reportType=='loan'" id="dvExcelData4">
+										<div class="row" style="margin-bottom:10px;">
+									<div class="col-xl-3 col-lg-3 col-md-3 col-12">
+									 <label  class="col-form-label">Select Unit </label>
+									<select ng-model="unitNameLoan" name="unitNameLoan" class="form-control" ng-change="setUnitNameLoan()" ng-options="obj.unitname as obj.unitname for obj in loanObj">	
+									<option value=""></option>										
+									</select>
+									
+									</div>
+									</div>
+									<div  class="row">
+									<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+									<div class="card">
+                                <h5 class="card-header">Loan Related Welfare Activity Entry Update Report</h5>
+                                <div class="card-body">
+                                    <table class="table table-striped">
+                                        <thead>
+                                            <tr>
+                                                <th scope="col">Sr.no.</th>
+                                                <th scope="col">Unit name </th>
+                                                <th scope="col">Record Updated Date </th>
+                                                <th scope="col">Update Status</th>
+                                                
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr ng-repeat ="obj in loanObj | filter:unitNameLoans">
+                                                <th scope="row">{{$index+1}}</th>
+                                                <td>{{obj.unitname}}</td>
+                                                 <td>{{obj.created_on}}</td>
+                                                <td>{{obj.status}}</td>
+                                               
+                                            </tr>
+                                            
+                                        </tbody>
+                                    </table>
+                                     <div style="margin-top: 30px;"><span> Sevarth Id : {{sevarth_id}} / </span><span>Unit Name : {{unitnames}} / </span><span>Date : {{todayDate}}</span> </div>
+                                </div>
+                            </div>
+                            </div>
+									</div>
+									<div>
+										<div>
+											<div style="text-align:center" >
+                                                         <div ><a  href="x" download="down.xls"  id="btnExport4" class="btn btn-primary" style="background: #307ECC;">
+									                <span class="glyphicon glyphicon-cloud-download" aria-hidden="true"> </span>
+									                Export Excel
+									            </a>  
+									             <input type="button"   id="save" style="background: #307ECC; border: #307ECC;color:white" ng-click='printDiv(4)' id="print" value="Print"  class="btn " autocomplete="off">                                                           
+                                                         </div>
+                                                        
+                                                         
+                                               </div>
+										</div>																											
+									</div>
+									</div>
+									
+										<!-- 	-----------------scheme related------------------------- -->
+										<div ng-show="reportType=='scheme'"  id="dvExcelData5">
+										<div class="row" style="margin-bottom:10px;">
+									<div class="col-xl-3 col-lg-3 col-md-3 col-12">
+									 <label  class="col-form-label">Select Unit </label>
+									<select ng-model="unitNameScheme" name="unitNameScheme" class="form-control" ng-change="setUnitNameScheme()" ng-options="obj.unitname as obj.unitname for obj in schemeObj">	
+									<option value=""></option>										
+									</select>
+									
+									</div>
+									</div>
+									<div class="row">
+									<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+									<div class="card">
+                                <h5 class="card-header">Scheme Related Welfare Activity Entry update Report</h5>
+                                <div class="card-body">
+                                    <table class="table table-striped">
+                                        <thead>
+                                            <tr>
+                                                <th scope="col">Sr.no.</th>
+                                                <th scope="col">Unit name </th>
+                                                 <th scope="col">Record Updated Date </th>
+                                                <th scope="col">Update Status</th>
+                                                
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr ng-repeat ="obj in schemeObj | filter:unitNameSchemes">
+                                                <th scope="row">{{$index+1}}</th>
+                                                <td>{{obj.unitname}}</td>
+                                                <td>{{obj.created_on}}</td>
+                                                <td>{{obj.status}}</td>
+                                               
+                                            </tr>
+                                            
+                                        </tbody>
+                                    </table>
+                                     <div style="margin-top: 30px;"><span> Sevarth Id : {{sevarth_id}} / </span><span>Unit Name : {{unitnames}} / </span><span>Date : {{todayDate}}</span> </div>
+                                </div>
+                            </div>
+                            </div>
+									</div>
+									<div>
+										<div>
+											<div style="text-align:center" >
+                                                         <div ><a  href="x" download="down.xls"  id="btnExport5" class="btn btn-primary" style="background: #307ECC;">
+									                <span class="glyphicon glyphicon-cloud-download" aria-hidden="true"> </span>
+									                Export Excel
+									            </a>   
+									             <input type="button"   id="save" style="background: #307ECC; border: #307ECC;color:white" ng-click='printDiv(5)' id="print" value="Print"  class="btn " autocomplete="off">                                                          
+                                                         </div>
+                                                        
+                                                         
+                                               </div>
+										</div>																											
+									</div>
+									</div>
+									
+									<!-- ---------------------- Arms related report-------------------- -->
+									
+									<div ng-show="ArmsReportType=='arms'" id="dvExcelData6">
+									<div class="row" style="margin-bottom:10px;">
+									<div class="col-xl-3 col-lg-3 col-md-3 col-12">
+									 <label  class="col-form-label">Select Unit </label>
+									<select ng-model="unitNameArms" name="unitNameArms" class="form-control" ng-change="setUnitNameArms()" ng-options="obj.unitname as obj.unitname for obj in armsObj">	
+									<option value=""></option>										
+									</select>
+									
+									</div>
+									</div>
+									<div  class="row">
+									<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+									<div class="card">
+                                <h5 class="card-header">Arms Related Armory Status Entry update Report</h5>
+                                <div class="card-body">
+                                    <table class="table table-striped">
+                                        <thead>
+                                            <tr>
+                                                <th scope="col">Sr.no.</th>
+                                                <th scope="col">Unit name </th>
+                                                <th scope="col">Record Updated Date </th>
+                                                <th scope="col">Update Status</th>
+                                                
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr ng-repeat ="obj in armsObj | filter: unitNameArmss">
+                                                <th scope="row">{{$index+1}}</th>
+                                                <td>{{obj.unitname}}</td>
+                                                 <td>{{obj.created_on}}</td>
+                                                <td>{{obj.status}}</td>
+                                               
+                                            </tr>
+                                            
+                                        </tbody>
+                                    </table>
+                                     <div style="margin-top: 30px;"><span> Sevarth Id : {{sevarth_id}} / </span><span>Unit Name : {{unitnames}} / </span><span>Date : {{todayDate}}</span> </div>
+                                </div>
+                            </div>
+                            </div>
+									</div>
+									
+									<div>
+										<div>
+											<div style="text-align:center" >
+                                                         <div ><a  href="x" download="down.xls"  id="btnExport6" class="btn btn-primary" style="background: #307ECC;">
+									                <span class="glyphicon glyphicon-cloud-download" aria-hidden="true"> </span>
+									                Export Excel
+									            </a>    
+									            <input type="button"   id="save" style="background: #307ECC; border: #307ECC;color:white" ng-click='printDiv(6)' id="print" value="Print"  class="btn " autocomplete="off">                                                         
+                                                         </div>
+                                                         
+                                               </div>
+										</div>																											
+									</div>
+									</div>
+									
+									
+									<!-- ---------------------- Ammunitions related report-------------------- -->
+									
+									<div ng-show="ArmsReportType=='ammunition'" id="dvExcelData7">
+									<div class="row" style="margin-bottom:10px;">
+									<div class="col-xl-3 col-lg-3 col-md-3 col-12">
+									 <label  class="col-form-label">Select Unit </label>
+									<select ng-model="unitNameAmmunition" name="unitNameAmmunition" class="form-control" ng-change="setUnitNameAmmunition()" ng-options="obj.unitname as obj.unitname for obj in ammunitionObj">	
+									<option value=""></option>										
+									</select>
+									
+									</div>
+									</div>
+									<div  class="row">
+									<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+									<div class="card">
+                                <h5 class="card-header">Ammunition Related Armory Status Entry update Report</h5>
+                                <div class="card-body">
+                                    <table class="table table-striped">
+                                        <thead>
+                                            <tr>
+                                                <th scope="col">Sr.no.</th>
+                                                <th scope="col">Unit name </th>
+                                                <th scope="col">Record Updated Date </th>
+                                                <th scope="col">Update Status</th>
+                                                
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr ng-repeat ="obj in ammunitionObj | filter :unitNameAmmunitions ">
+                                                <th scope="row">{{$index+1}}</th>
+                                                <td>{{obj.unitname}}</td>
+                                                 <td>{{obj.created_on}}</td>
+                                                <td>{{obj.status}}</td>
+                                               
+                                            </tr>
+                                            
+                                        </tbody>
+                                    </table>
+                                     <div style="margin-top: 30px;"><span> Sevarth Id : {{sevarth_id}} / </span><span>Unit Name : {{unitnames}} / </span><span>Date : {{todayDate}}</span> </div>
+                                </div>
+                            </div>
+                            </div>
+									</div>
+									
+									<div>
+										<div>
+											<div style="text-align:center" >
+                                                         <div ><a  href="x" download="down.xls"  id="btnExport7" class="btn btn-primary" style="background: #307ECC;">
+									                <span class="glyphicon glyphicon-cloud-download" aria-hidden="true"> </span>
+									                Export Excel
+									            </a>   
+									            <input type="button"   id="save" style="background: #307ECC; border: #307ECC;color:white" ng-click='printDiv(7)' id="print" value="Print"  class="btn " autocomplete="off">                                                          
+                                                         </div>
+                                                         
+                                               </div>
+										</div>																											
+									</div>
+									</div>
+									
+									
+									
+									<!-- ---------------------- Gas Ammunition related report-------------------- -->
+									
+									<div ng-show="ArmsReportType=='gas'" id="dvExcelData8">
+									<div class="row" style="margin-bottom:10px;">
+									<div class="col-xl-3 col-lg-3 col-md-3 col-12">
+									 <label  class="col-form-label">Select Unit </label>
+									<select ng-model="unitNameGas" name="unitNameGas" class="form-control" ng-change="setUnitNameGas()" ng-options="obj.unitname as obj.unitname for obj in gasAmmunitionObj">	
+									<option value=""></option>										
+									</select>
+									
+									</div>
+									</div>
+									<div  class="row">
+									<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+									<div class="card">
+                                <h5 class="card-header">Gas Ammunition Related Armory Status Entry update Report</h5>
+                                <div class="card-body">
+                                    <table class="table table-striped">
+                                        <thead>
+                                            <tr>
+                                                <th scope="col">Sr.no.</th>
+                                                <th scope="col">Unit name </th>
+                                                <th scope="col">Record Updated Date </th>
+                                                <th scope="col">Update Status</th>
+                                                
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr ng-repeat ="obj in gasAmmunitionObj | filter:unitNameGass">
+                                                <th scope="row">{{$index+1}}</th>
+                                                <td>{{obj.unitname}}</td>
+                                                 <td>{{obj.created_on}}</td>
+                                                <td>{{obj.status}}</td>
+                                               
+                                            </tr>
+                                            
+                                        </tbody>
+                                    </table>
+                                     <div style="margin-top: 30px;"><span> Sevarth Id : {{sevarth_id}} / </span><span>Unit Name : {{unitnames}} / </span><span>Date : {{todayDate}}</span> </div>
+                                </div>
+                            </div>
+                            </div>
+									</div>
+									
+									<div>
+										<div>
+											<div style="text-align:center" >
+                                                         <div ><a  href="x" download="down.xls"  id="btnExport8" class="btn btn-primary" style="background: #307ECC;">
+									                <span class="glyphicon glyphicon-cloud-download" aria-hidden="true"> </span>
+									                Export Excel
+									            </a>   
+									             <input type="button"   id="save" style="background: #307ECC; border: #307ECC;color:white" ng-click='printDiv(8)' id="print" value="Print"  class="btn " autocomplete="off">                                                          
+                                                         </div>
+                                                         
+                                                          
+                                                         
+                                               </div>
+										</div>																											
+									</div>
+									</div>
+									
+									
+									
+								</div>
+							</div>							
+						</div>						
+					</div>
+				</div>

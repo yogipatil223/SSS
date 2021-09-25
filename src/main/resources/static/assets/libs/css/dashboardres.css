@@ -1,0 +1,15 @@
+@charset "ISO-8859-1";
+ @media  (max-device-width: 768px) {
+ 
+ .dlogo{
+ display:none;
+ }
+ 
+ .dheadsize{
+ font-size: 23px;
+ }
+ 
+ #log_out{
+	display:block;
+}
+ }

@@ -1,0 +1,222 @@
+<div class="container-fluid dashboard-content ">
+					<!-- ============================================================== -->
+					<!-- pageheader  -->
+					<!-- ============================================================== -->
+					<div class="row">
+						<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+							<div class="page-header">
+								<label class="pageheader-title" style="font-size: 16px;font-weight: bold;color:white;">User Count Report
+								</label>															
+							</div>
+						</div>
+					</div>
+					<!-- ============================================================== -->
+					<!-- end pageheader  -->
+					<!-- ============================================================== -->
+					<div class="ecommerce-widget">
+
+						<div class="row">
+							
+							
+						</div>
+						<div class="row">
+							<!-- ============================================================== -->
+
+							<!-- ============================================================== -->
+
+							<!-- recent orders  -->
+							<!-- ============================================================== -->
+							<div class="col-xl-12 col-lg-12 col-md-6 col-sm-12 col-12">
+								<div class="card" style = "padding : 30px;" >
+								 <form ng-submit="saveModpermission()">
+								 
+								 <div class="row" >
+									
+										
+										<div class="col-xl-3 col-lg-3 col-md-3 ">
+											<div class="form-group">
+                                                <label  class="col-form-label ">Branches:</label>
+                                                <!-- <input type="text" name="username" ng-model="username" textaccept capitalize class="form-control"> -->
+                                                <select  name="branch" ng-model="branch"  ng-change="onChangeBranch()" class="form-control" ng-options="branches.branch as branches.branch for branches in branchObj " >
+                                                <option value="">All </option>
+                                                </select>
+                                            </div>
+										</div>
+										<div class="col-xl-3 col-lg-3 col-md-3 ">
+											<div class="form-group">
+                                                <label  class="col-form-label ">Commissionerate/Ranges:</label>
+                                               <!--  <input  type="text" name="sevarthnum"  ng-model="sevarthnum" class="form-control"> -->
+                                                <select  name="cityRange" ng-change="onChangeCityRange()" ng-disabled="branch != 'Commissionerate' &&  branch != 'Range'"  ng-model="cityRange" class="form-control" ng-options="cityRanges.level1  as cityRanges.cityrange_n for cityRanges in cityRangeObj " >
+                                                 <option value="">All </option></select>
+                                           
+                                            </div>
+										</div>
+										
+										<div class="col-xl-3 col-lg-3 col-md-3 ">
+											<div class="form-group">
+                                                <label  class="col-form-label ">District/Zone:</label>
+                                               <!--  <input  type="text" name="mobile_num" ng-model="mobile_num"  numbers-only class="form-control"> -->
+                                                <select  class="form-control" id="hidedist" ><option value="">All</option></select>
+                                               <select  ng-if="branch == 'Commissionerate'" id="distZone"  ng-change="onChangeDistZone()"  name="distZone" ng-model="distZone" class="form-control" ng-options="distZones.level2  as distZones.zone_n for distZones in distZoneObj "><option value="">All </option></select>
+                                                <select ng-if="branch== 'Range'" ng-change="onChangeDistZone()"  id="distZone" name="distZone" ng-model="distZone" class="form-control" id="distZone" ng-options="distZones.level2  as distZones.dtename for distZones in distZoneObj"><option value="">All </option></select>
+                                            </div>
+										</div>
+										<div class="col-xl-3 col-lg-3 col-md-3 ">
+											<div class="form-group">
+                                                <label  class="col-form-label ">Police Stations/ offices:</label>
+                                               <!--  <input  type="text" name="mobile_num" ng-model="mobile_num"  numbers-only class="form-control"> -->
+                                              <select  name="ps_station" ng-model="ps_station" class="form-control" ng-options="policeStations.level3  as policeStations.ps_name for policeStations in policeStationObj" >
+                                              <option value="">All </option>
+                                              </select>
+                                            </div>
+										</div>
+										
+										
+									</div>
+								 
+								 
+								 
+								 <div class="row" ng-hide="true">
+								 <div class="col-xl-3 col-lg-3 col-md-3 ">
+											<div class="form-group">
+                                                <label  class="col-form-label required">Rank:</label>                                               
+                                                <select  name="rank" ng-model="rank"  ng-change="getMaxRankValue()"  class="form-control" ng-options="ranks.rank as ranks.rank for ranks in rankObj | orderBy:'rank'"  required>
+                                                <option value="">- - Select Rank - - </option>
+                                                </select>
+                                            </div>
+										</div>
+									<!-- <div class="col-xl-3 col-lg-3 col-md-3 ">
+											<div class="form-group">
+                                                <label  class="col-form-label required">Select Module:</label>
+                                                <input type="text" name="username" ng-model="username" textaccept capitalize class="form-control">
+                                                <select  name="moduleid" ng-model="moduleid"  ng-change="getDataByModId()"  class="form-control" ng-options="modules.module_id as modules.module_name for modules in moduleDataObj " required>
+                                                <option value="">- - Select Module - -</option>
+                                                </select>
+                                            </div>
+										</div> -->
+								 </div>
+								
+																	
+									
+									
+									<div style="text-align:center;" >
+										
+										
+										<div >
+											<div class="form-group">
+											   <input type="button"  ng-click="getCount()" value="Get Count" style="background: #307ECC; border: #307ECC;color:white"  class="btn " autocomplete="off">
+                                                <input type="button"  ng-click="getUserDetail()" value="Get User Detail" style="background: #307ECC; border: #307ECC;color:white"  class="btn " autocomplete="off">
+                                                 <input type="button"  ng-click="clearForm()" value="Cancel" style="background: #bdb5b5; border: #bdb5b5;"  class="btn btn-secondary" autocomplete="off">
+                                            </div>
+										</div>	
+																												
+									</div>
+									</form>
+									<div id="loader" style="text-align:center;">
+												<div class="lds-ring"><div></div><div></div><div></div><div></div></div>
+											</div>
+								<!-- 	------------------   updated records  ------------------------- -->
+									<div id="updatedData">
+									<div id="dvExcelData">
+									<div class="row">
+									<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+									<div class="card">
+                                <h5 class="card-header">Unitwise User Information</h5>
+                                <div class="card-body">
+                                    <table class="table table-striped">
+                                        <thead>
+                                            <tr>
+                                                <th scope="col">Sr.no.</th>
+                                                 <th scope="col">Units</th>
+                                                 <th scope="col">User Rank</th>
+                                                <th scope="col">First Name</th>
+                                                <th scope="col">Middle Name</th>
+                                                <th scope="col">Last Name</th>
+                                                <!-- <th scope="col">Validate</th> -->
+                                                <th scope="col">Sevarth Id</th>
+                                                <th scope="col">Mobile No.</th>
+                                               
+                                                
+                                            </tr>
+                                        </thead>
+                                        <tbody id="userDetailData">
+                                           
+                                            
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            </div>
+									</div>
+									</div>
+									
+                                                     
+                                <div >
+										<div>
+											<div style="text-align:center" >
+                                                         <div ><a  href="x" download="down.xls"  id="btnExport1" class="btn btn-primary">
+                <span class="glyphicon glyphicon-cloud-download" aria-hidden="true"> </span>
+                Export Excel
+            </a>                                                             
+                                                         </div>
+                                                         
+                                                     </div>
+										</div>
+																												
+									</div>
+									
+									</div>
+									
+							<!-- 	----------------------  filterd record------------------------	 -->
+									<div id="filterData">
+									<div id="dvExcelData1">
+									<div class="row">
+									<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+									<div class="card">
+                                <h5 class="card-header">Unitwise User Count Report</h5>
+                                <div class="card-body">
+                                    <table class="table table-striped">
+                                        <thead>
+                                            <tr>
+                                                <th scope="col">No..</th>
+                                                <th scope="col">Units</th>
+                                                <th scope="col">Rank</th>
+                                                <th scope="col">User Count</th>
+                                                
+                                                
+                                            </tr>
+                                        </thead>
+                                        <tbody id="userCountData">
+                                           
+                                            
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            </div>
+									</div>
+									</div>
+									
+                                                     
+                                                     <div >
+										<div>
+											<div style="text-align:center" >
+                                                         <div ><a  href="x" download="down.xls"  id="btnExport" class="btn btn-primary">
+                <span class="glyphicon glyphicon-cloud-download" aria-hidden="true"> </span>
+                Export Excel
+            </a>                                                             
+                                                         </div>
+                                                         
+                                                     </div>
+										</div>
+																												
+									</div>
+									
+									</div>
+                                                     
+                                                     
+								</div>
+							</div>							
+						</div>						
+					</div>
+				</div>

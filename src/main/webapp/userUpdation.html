@@ -1,0 +1,272 @@
+<div class="container-fluid dashboard-content ">
+					<!-- ============================================================== -->
+					<!-- pageheader  -->
+					<!-- ============================================================== -->
+					<div class="row">
+						<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+							<div class="page-header">
+								<label class="pageheader-title" style="font-size: 16px;font-weight: bold;color:white;">User Management -> User Updation
+								</label>
+							
+								
+							</div>
+						</div>
+					</div>
+					<!-- ============================================================== -->
+					<!-- end pageheader  -->
+					<!-- ============================================================== -->
+					<div class="ecommerce-widget">
+
+						<div class="row">
+							
+							
+						</div>
+						<div class="row">
+							<!-- ============================================================== -->
+
+							<!-- ============================================================== -->
+
+							<!-- recent orders  -->
+							<!-- ============================================================== -->
+							<div class="col-xl-12 col-lg-12 col-md-6 col-sm-12 col-12">
+								<div class="card" style = "padding : 30px;" >
+								
+								 <div class="row">
+								 <div class="col-xl-3 col-lg-3 col-md-3 ">
+											<div class="form-group">
+											 <label  class="col-form-label">Search User Id:</label>
+											<div angucomplete-alt id="ex1"
+                                                                    placeholder="User Id"
+                                                                    pause="100"
+                                                                   selected-object="selectedSevarthNum"
+                                                                    local-data="sevarthNumObj"
+                                                                    search-fields="sevarth_no"
+                                                                    title-field="sevarth_no"
+                                                                    minlength="1"
+                                                                    initial-value="selectedSevarthNum"
+                                                                    match-class="highlight"
+                                                                    
+                                                                    input-class="form-control" >
+                                                                  </div>
+											
+                                               </div>
+										</div>
+								 </div>
+								 <form ng-submit="updateUser()">
+									<div class="row">
+									
+									<div class="col-xl-3 col-lg-3 col-md-3">
+											<div class="form-group">
+                                                <label  class="col-form-label required">User Id:</label>
+                                                <input  type="text" name="sevarthnum"  ng-model="sevarthnum" class="form-control" autocomplete="off" required>
+                                            </div>
+										</div>									
+										<div class="col-xl-3 col-lg-3 col-md-3 ">
+											<div class="form-group">
+                                                <label  class="col-form-label required">First Name:</label>
+                                                <input  type="text" name="firstname" ng-model="firstname"  capitalize class="form-control" autocomplete="off" required>
+                                            </div>
+										</div>
+										<div class="col-xl-3 col-lg-3 col-md-3 ">
+											<div class="form-group">
+                                                <label  class="col-form-label ">Middle Name:</label>
+                                                <input  type="text" name="middlename" ng-model="middlename"  capitalize class="form-control" autocomplete="off" >
+                                            </div>
+										</div>
+										<div class="col-xl-3 col-lg-3 col-md-3 ">
+											<div class="form-group">
+                                                <label  class="col-form-label required">Last Name:</label>
+                                                <input  type="text" name="lastname" ng-model="lastname"  capitalize class="form-control" autocomplete="off"  required>
+                                            </div>
+										</div>
+										
+										
+									</div>
+									
+									<div class="row" >
+									
+										
+										<div class="col-xl-3 col-lg-3 col-md-3 ">
+											<div class="form-group">
+                                                <label  class="col-form-label required">Branches:</label>
+                                                <!-- <input type="text" name="username" ng-model="username" textaccept capitalize class="form-control"> -->
+                                                <select  name="branch" ng-model="branch"  ng-change="onChangeBranch()" class="form-control" ng-options="branches.branch as branches.branch for branches in branchObj " required>
+                                                <option value="">- - Select Branch - - </option></select>
+                                            </div>
+										</div>
+										<div class="col-xl-3 col-lg-3 col-md-3 ">
+											<div class="form-group">
+                                                <label  class="col-form-label required">Commissionerate/Ranges:</label>
+                                               <!--  <input  type="text" name="sevarthnum"  ng-model="sevarthnum" class="form-control"> -->
+                                                <select  name="cityRange" ng-change="onChangeCityRange()" ng-disabled="branch != 'Commissionerate' &&  branch != 'Range'"  ng-model="cityRange" class="form-control" ng-options="cityRanges.level1  as cityRanges.cityrange_n for cityRanges in cityRangeObj ">
+                                                <option value="">- - Select Range/Commissionerate - - </option></select></select>
+                                           
+                                            </div>
+										</div>
+										
+										<div class="col-xl-3 col-lg-3 col-md-3 ">
+											<div class="form-group">
+                                                <label  class="col-form-label required">District/Zone:</label>
+                                               <!--  <input  type="text" name="mobile_num" ng-model="mobile_num"  numbers-only class="form-control"> -->
+                                                <select  class="form-control" id="hidedist" placeholder="- - Select District / Zone - -"></select>
+                                               <select  ng-show="branch == 'Commissionerate'" id="distZone"  ng-change="onChangeDistZone()"  name="distZone" ng-model="distZone" class="form-control" ng-options="distZones.level2  as distZones.zone_n for distZones in distZoneObj "><option value="">- - Select Zone - - </option></select>
+                                                <select ng-show="branch== 'Range'" ng-change="onChangeDistZone()"   name="distZones" ng-model="distZones" class="form-control" id="distZones" ng-options="distZones.level2  as distZones.dtename for distZones in distZoneObj"><option value="">- - Select District - - </option></select>
+                                            </div>
+										</div>
+										<div class="col-xl-3 col-lg-3 col-md-3 ">
+											<div class="form-group">
+                                                <label  class="col-form-label required">Police Stations/ offices:</label>
+                                               <!--  <input  type="text" name="mobile_num" ng-model="mobile_num"  numbers-only class="form-control"> -->
+                                              <select  name="ps_station" ng-model="ps_station" class="form-control" ng-options="policeStations.level3  as policeStations.ps_name for policeStations in policeStationObj" >
+                                               <option value="">- - Select Police Station / Offices - - </option></select>
+                                            </div>
+										</div>
+										
+										
+									</div>
+									
+									<div class="row">
+									
+									<div class="col-xl-3 col-lg-3 col-md-3 ">
+											<div class="form-group">
+                                                <label  class="col-form-label required">Gender:</label>
+                                              
+                                                <select  name="gender" ng-model="gender" class="form-control" required> 
+                                                 <option value="">- - Select Gender - - </option>
+                                                <option value="male">Male</option>     
+                                                <option value="female">Female</option> 
+                                                <option value="other">Other</option>                                       
+                                                </select>
+                                            </div>
+										</div>
+									
+									<div class="col-xl-3 col-lg-3 col-md-3 ">
+											<div class="form-group">
+                                                <label  class="col-form-label required">Rank:</label>                                             
+                                                   <select  name="rank" ng-model="rank"  ng-change="getMaxRankValue()" class="form-control" ng-options="ranks.rank as ranks.rank for ranks in rankObj | orderBy:'rank'" required>
+                                                   <option value="">- - Select Rank - - </option>
+                                                   </select>
+                                            </div>
+										</div>
+									
+									
+										
+										<div class="col-xl-3 col-lg-3 col-md-3 ">
+											<div class="form-group">
+                                                <label  class="col-form-label required">User Type:</label>
+                                              
+                                                <select  name="userType" ng-model="userType" ng-change="chageUsertype()" class="form-control"  required> 
+                                                <option value=""></option> 
+                                                <option ng-repeat="userTypes in userTypesObj | orderBy:'rank'" value="{{userTypes}}">{{userTypes}}</option>                                             
+                                                </select>
+                                            </div>
+										</div>
+										<div class="col-xl-3 col-lg-3 col-md-3 ">
+											<div class="form-group">
+                                                <label  class="col-form-label required">Rank Level:</label>
+                                              
+                                                <select  name="rankstatus" ng-model="rankstatus" class="form-control" required> 
+                                                 <option value="">- - Select Rank Level - - </option>
+                                                <option value="1"> SP and Above</option>     
+                                                <option value="0"> Below SP</option>                                         
+                                                </select>
+                                            </div>
+										</div>
+									
+										
+										<!-- <div class="col-xl-3 col-lg-3 col-md-3 ">
+											<div class="form-group">
+                                                <label  class="col-form-label">Regions:</label>
+                                                <input  type="text" name="sevarthnum"  ng-model="sevarthnum" class="form-control">
+                                                <select  name="regions" ng-model="regions" class="form-control"></select>
+                                            </div>
+										</div> -->
+										
+									</div>
+																		
+									
+									
+									<div class="row" style="margin-bottom: 20px;">
+									
+									<div class="col-xl-3 col-lg-3 col-md-3 ">
+											<div class="form-group">
+                                                <label  class="col-form-label required">Mobile Number:</label>
+                                                <input  type="text" name="mobile_num" ng-model="mobile_num"  numbers-only oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" min="0" maxlength="10"  class="form-control" autocomplete="off" required>
+                                            </div>
+										</div>
+										<div class="col-xl-3 col-lg-3 col-md-3 ">
+											<div class="form-group">
+                                                <label  class="col-form-label ">Email Id:</label>
+                                                <input  type="email" name="emailid" ng-model="emailid"   class="form-control" autocomplete="off">
+                                            </div>
+										</div>
+										
+										<div class="col-xl-3 col-lg-3 col-md-3">
+													<div class="form-group">
+		                                                <label  class="col-form-label required">Sevarth Number:</label>
+		                                                <input  type="text" name="sevarth_id"  ng-model="sevarth_id" capitalize class="form-control" required autocomplete="off">
+		                                            </div>
+												</div>
+									
+									<!-- <div class="col-xl-3 col-lg-3 col-md-3 ">
+											<div class="form-group">
+                                                <label  class="col-form-label">Creator's Sevarth Number:</label>
+                                                 <input type="text"  name="creator" ng-model="creator"  class="form-control" autocomplete="off"> 
+                                             
+                                            </div>
+										</div> -->
+										<div class="col-xl-3 col-lg-3 col-md-3 ">
+											<div class="form-group">
+                                                <label  class="col-form-label required">Status:</label>
+                                              
+                                                <select  name="status" ng-model="status" class="form-control" required> 
+                                                <option value=""></option>
+                                                <option value="enable"> Enable</option>     
+                                                <option value="disable"> Disable</option>                                         
+                                                </select>
+                                            </div>
+										</div>
+										
+									</div>
+									
+									<!-- <div class="row" >
+										<div class="offset-xl-4 offset-lg-4 offset-md-4  ">
+											<div class="form-group">
+                                              
+                                                 <input type="submit"  value="Update User" style="background: #307ECC; border: #307ECC; color:white" class="btn " autocomplete="off"> 
+                                             
+                                            </div>
+										</div>
+										<div class="col-xl-1 col-lg-1 col-md-1 ">
+											<div class="form-group">
+                                                <input type="button"  ng-click="clearForm()" value="Cancel" style="background: #bdb5b5; border: #bdb5b5;"  class="btn btn-secondary" autocomplete="off">
+                                            </div>
+										</div>	
+										<div class="col-xl-1 col-lg-1 col-md-1 ">
+											<div class="form-group">
+                                                <input type="button"  ng-click="resetPassword()" value="Reset Password" title="first search user id to change password. password will send to their registered mobile number" style="background: #307ECC; border: #307ECC; color:white"  class="btn btn-secondary" autocomplete="off">
+                                            </div>
+										</div>																			
+									</div> -->
+									
+									
+									<div style="text-align: center;" >
+										
+										
+										<div >
+											<div class="form-group">
+											 <input type="submit"  value="Update User" style="background: #307ECC; border: #307ECC; color:white" class="btn " autocomplete="off">
+                                                 <input type="button"  ng-click="clearForm()" value="Cancel" style="background: #bdb5b5; border: #bdb5b5;"  class="btn btn-secondary" autocomplete="off">
+                                                 <input type="button"  ng-click="resetPassword()" value="Reset Password" title="first search user id to change password. password will send to their registered mobile number" style="background: #307ECC; border: #307ECC; color:white"  class="btn btn-secondary" autocomplete="off">
+                                            </div>
+										</div>	
+																													
+									</div>
+									
+									
+									</form>
+								</div>
+							</div>							
+						</div>						
+					</div>
+				</div>

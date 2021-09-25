@@ -1,0 +1,65 @@
+
+
+     @media  (max-device-width: 768px) {
+     
+.mhpolicelogo{
+    width: 439px;
+    height: 324px;
+    margin-bottom: 35px;
+}
+     
+.radioLabel{
+	font-size: 35px;
+	margin-bottom: 11px;
+}     
+
+.radiosize{
+	    color: #428bca;
+    /* font-size: 50px; */
+    border: 0px;
+    width: 12%;
+    height: 1em;
+}     
+
+.inputBoxHeight{
+	height: 86px;
+	margin-bottom: 11px;
+	    font-size: 30px;
+}     
+
+.sendOtp{
+	width:100%;
+	font-size: 39px;
+	height: 86px;
+	margin-bottom: 11px;
+}     
+ .sshead{
+ margin-bottom: 20px;
+    text-align: center;
+    font-size: 69px;
+    border: 2px solid;
+    background: #5a7fc9;
+    color: white;
+    height: 144px;
+    line-height: 117px;
+ }    
+     
+     .logbtmMargin{
+  margin-bottom: 33px;
+  }
+  
+ /* ---------- */ 
+  .rboxResp{
+   border: 1px solid #5a7fc9;  padding: 15px;margin: auto;  margin-top: 9%;width:unset;
+  }
+  .regLabel{
+  font-size: 69px;
+    margin-bottom: 33px;
+  }
+   /* ---------- */ 
+  
+  .reqParam{
+  font-size: 33px;
+  }
+  
+    }

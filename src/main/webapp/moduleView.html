@@ -1,0 +1,100 @@
+<div class="container-fluid dashboard-content " style="background: #00005A; background-image: url('assets/images/police image.jpg'); background-repeat: no-repeat; background-position: 37%;position:absolute;height:100% ">
+					<!-- ============================================================== -->
+					<!-- pageheader  -->
+					<!-- ============================================================== -->
+					<div class="row">
+						<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+							<div class="page-header">
+								
+							
+								
+							</div>
+						</div>
+					</div>
+					<!-- ============================================================== -->
+					<!-- end pageheader  -->
+					<!-- ============================================================== -->
+					<div class="ecommerce-widget" style=" margin-left: 4px;">
+
+						<div class="row">
+							
+							
+						</div>
+						
+							<!-- ============================================================== -->
+
+							<!-- ============================================================== -->
+
+							<!-- recent orders  -->
+							<!-- ============================================================== -->
+							<!--  <div class="row">
+									<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+									<div class="card">
+                                <h5 class="card-header">Modules</h5>
+                                <div class="card-body">
+                                    <table class="table table-striped">
+                                        <thead>
+                                            <tr>
+                                                <th scope="col">Sr.no.</th>
+                                                <th scope="col">Module Name</th>
+                                                <th scope="col">Module Owner</th>
+                                                <th scope="col">Module Purpose</th>                                                                                    
+                                                <th scope="col"></th>
+                                               
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr ng-repeat ="module in moduleDataObj">
+                                                <th scope="row">{{$index+1}}</th>
+                                                <td>{{module.bean.module_name}}</td>
+                                                <td>{{module.bean.mod_owner}}</td>
+                                                <td>{{module.bean.mod_purpose}}</td>                                                                                                                                  
+                                                <td><form id="{{'form'+$index}}"  method="post" action=""><input type="text" name="username" style="display:none" ng-model="username"/> <input type="text" style="display:none" name="password" ng-model="password"/> <input type="submit"   value="Visit Site"  class="btn btn-primary"  autocomplete="off">	</form> </td>                                                
+                                          	
+                                            </tr>                                            
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            </div>
+					</div>	  -->
+							
+							<div class="row" id="cardData">
+							<div  class="col-lg-1 col-sm-1 col-md-1" ng-repeat ="module in moduleDataObj" style="padding:7px" ng-click="sendModId(module.bean.module_id)">
+								<form id="{{'form'+$index}}"   method="post" action="">
+                        <div  class="card gradient-T" onClick="javascript:this.parentNode.submit();" style="height: 204px;text-align: center;background-color: {{module.bean.mod_color}};">
+                         <img src="{{module.bean.mod_image}}" style="height: 120px;padding: 8px;" alt="Maharashtra Police Logo" >
+					
+						<input type="text" name="username" style="display:none" ng-model="username"/> 
+						<input type="text" style="display:none" name="password" ng-model="password"/>
+						
+						<input type="text" style="display:none" name="level0" ng-model="level0"/> 
+						<input type="text" style="display:none" name="level1" ng-model="level1"/> 
+						<input type="text" style="display:none" name="level2" ng-model="level2"/> 
+						<input type="text" style="display:none" name="level3" ng-model="level3"/>
+						<input type="text" style="display:none" name="branch" ng-model="branch"/>  
+						
+						<input type="text" style="display:none" name="view"  value={{module.per_view}}/> 
+						<input type="text" style="display:none" name="dataentry"  value={{module.per_dataentry}}/> 
+						<input type="text" style="display:none" name="validate"  value={{module.per_validate}}/>  
+						<input type="text" style="display:none" name="modkey"  value={{module.bean.mod_key}}/>  						
+				        <input type="text" style="display:none" name="modulename"  value={{module.bean.module_name}}/> 
+				        <input type="text" style="display:none" name="deskofficer"  value={{module.per_desk}}/> 
+				        <input type="text" style="display:none" name="gisview"  value={{module.per_gis}}/> 	
+				        <input type="text" style="display:none" name="user_type"  value={{module.usrbean.user_type}}/>							
+																		
+                            <div class="card-body" style="padding:6px;">
+                                <label style="font-size: 9px;
+    color: black;" class="card-title text-blue"><b>{{module.bean.module_name}}</b></label>                                
+                                <span class="float-right display-5 opacity-1"></span>
+                            </div>
+							
+                        </div>
+                        </form>
+                    </div>		
+							</div>		
+									
+															
+						</div>						
+					
+				</div>

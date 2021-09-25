@@ -1,0 +1,381 @@
+<div class="container-fluid dashboard-content ">
+					<!-- ============================================================== -->
+					<!-- pageheader  -->
+					<!-- ============================================================== -->
+					<div class="row">
+						<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+							<div class="page-header">
+								<label class="pageheader-title" style="font-size: 16px;font-weight: bold;color:white;">Unit Management 
+								</label>
+							
+								
+							</div>
+						</div>
+					</div>
+					<!-- ============================================================== -->
+					<!-- end pageheader  -->
+					<!-- ============================================================== -->
+					<div class="ecommerce-widget">
+
+						<div class="row">
+							
+							
+						</div>
+						<div class="row">
+							<!-- ============================================================== -->
+
+							<!-- ============================================================== -->
+
+							<!-- recent orders  -->
+							<!-- ============================================================== -->
+							<div class="col-xl-12 col-lg-12 col-md-6 col-sm-12 col-12">
+								<div class="card" style = "padding : 30px;overflow: auto;" >
+								
+								
+								 <form ng-submit="saveRoneRecord()">
+									<div class="row" >
+										
+										
+										<div class="col-xl-3 col-lg-3 col-md-3 ">
+											<div class="form-group">
+                                                <label  class="col-form-label">PS CODE:</label>
+                                               <input  type="text" name="ps_code"  ng-model="ps_code"    class="form-control" autocomplete="on" required>
+                                              
+                                            </div>
+										</div>
+										<div class="col-xl-3 col-lg-3 col-md-3 ">
+												<div class="form-group">
+	                                                <label  class="col-form-label">ZN CODE</label>
+	                                                <input  type="text" name="zncode"  ng-model="zncode"    class="form-control" autocomplete="on" required>
+	                                            </div>
+											</div>
+											
+											<div class="col-xl-3 col-lg-3 col-md-3 ">
+											<div class="form-group">
+                                                <label  class="col-form-label">RNG CODE</label>
+                                                <input  type="text" name="rng_code"  ng-model="rng_code"   class="form-control" autocomplete="on" required>
+                                            </div>
+										</div>
+										<div class="col-xl-3 col-lg-3 col-md-3 ">
+											<div class="form-group">
+                                                <label  class="col-form-label">PS NAME</label>
+                                                <input  type="text" name="ps_name"  ng-model="ps_name"    class="form-control" autocomplete="on" required>
+                                            </div>
+										</div>
+										</div>
+										
+										<div class="row" >
+										
+										
+										<div class="col-xl-3 col-lg-3 col-md-3 ">
+											<div class="form-group">
+                                                <label  class="col-form-label">DTE NAME</label>
+                                               <input  type="text" name="dtename"  ng-model="dtename"  class="form-control" autocomplete="on" required>
+                                              
+                                            </div>
+										</div>
+										<div class="col-xl-3 col-lg-3 col-md-3 ">
+												<div class="form-group">
+	                                                <label  class="col-form-label">PS CCTNS</label>
+	                                                <input  type="text" name="ps_cctns"  ng-model="ps_cctns"  class="form-control" autocomplete="on" required>
+	                                            </div>
+											</div>
+											
+											<div class="col-xl-3 col-lg-3 col-md-3 ">
+											<div class="form-group">
+                                                <label  class="col-form-label">DG CODE</label>
+                                                <input  type="text" name="dg_code"   ng-model="dg_code" class="form-control" autocomplete="on" required>
+                                            </div>
+										</div>
+										<div class="col-xl-3 col-lg-3 col-md-3 ">
+											<div class="form-group">
+                                                <label  class="col-form-label">CP SP RPF</label>
+                                                <input  type="text" name="cp_sp_rpf"  ng-model="cp_sp_rpf"  class="form-control" autocomplete="on" required>
+                                            </div>
+										</div>
+										</div>
+										
+										
+										
+										<div class="row" >
+										
+										
+										<div class="col-xl-3 col-lg-3 col-md-3 ">
+											<div class="form-group">
+                                                <label  class="col-form-label"> CITY RANGE N</label>
+                                               <input  type="text" name="cityrange_n"  ng-model="cityrange_n"  class="form-control" autocomplete="on" required>
+                                              
+                                            </div>
+										</div>
+										<div class="col-xl-3 col-lg-3 col-md-3 ">
+												<div class="form-group">
+	                                                <label  class="col-form-label">ZONE N</label>
+	                                                <input  type="text" name="zone_n"  ng-model="zone_n" class="form-control" autocomplete="on" required>
+	                                            </div>
+											</div>
+											<div class="col-xl-3 col-lg-3 col-md-3 ">
+											<div class="form-group">
+                                                <label  class="col-form-label">JURISDICTION</label>
+                                                <input  type="text" name="JURISDICTION"  ng-model="JURISDICTION"   class="form-control" autocomplete="on" required>
+                                            </div>
+										</div>
+										<div class="col-xl-3 col-lg-3 col-md-3 ">
+											<div class="form-group">
+                                                <label  class="col-form-label">POLICE STN LAT</label>
+                                                <input  type="text" name="police_stn_lat"  ng-model="police_stn_lat"  class="form-control" autocomplete="on" required>
+                                            </div>
+										</div>
+										</div>
+										
+										
+										
+										<div class="row" >
+										
+										
+										<div class="col-xl-3 col-lg-3 col-md-3 ">
+											<div class="form-group">
+                                                <label  class="col-form-label"> POLICE STN LONG</label>
+                                               <input  type="text" name="police_stn_long"  ng-model="police_stn_long"  class="form-control" autocomplete="on" required>
+                                              
+                                            </div>
+										</div>
+										<div class="col-xl-3 col-lg-3 col-md-3 ">
+												<div class="form-group">
+	                                                <label  class="col-form-label">RANGE CENT LAT</label>
+	                                                <input  type="text" name="range_cent_lat"  ng-model="range_cent_lat"  class="form-control" autocomplete="on" required>
+	                                            </div>
+											</div>
+											
+											<div class="col-xl-3 col-lg-3 col-md-3 ">
+											<div class="form-group">
+                                                <label  class="col-form-label">RANGE CENT LONG</label>
+                                                <input  type="text" name="range_cent_long"  ng-model="range_cent_long"   class="form-control" autocomplete="on" required>
+                                            </div>
+										</div>
+										<div class="col-xl-3 col-lg-3 col-md-3 ">
+											<div class="form-group">
+                                                <label  class="col-form-label">DIST CENT LAT</label>
+                                                <input  type="text" name="dist_cent_lat"  ng-model="dist_cent_lat"   class="form-control" autocomplete="on" required>
+                                            </div>
+										</div>
+										</div>
+										 
+										 
+										 
+										 <div class="row" >
+										
+										
+										<div class="col-xl-3 col-lg-3 col-md-3 ">
+											<div class="form-group">
+                                                <label  class="col-form-label"> DIST CENT LONG</label>
+                                               <input  type="text" name="dist_cent_long"  ng-model="dist_cent_long"  class="form-control" autocomplete="on" required>
+                                              
+                                            </div>
+										</div>
+										<div class="col-xl-3 col-lg-3 col-md-3 ">
+												<div class="form-group">
+	                                                <label  class="col-form-label">POLICE STN LAT NT</label>
+	                                                <input  type="text" name="police_stn_lat_n"  ng-model="police_stn_lat_n"   class="form-control" autocomplete="on" required>
+	                                            </div>
+											</div>
+											
+										<div class="col-xl-3 col-lg-3 col-md-3 ">
+											<div class="form-group">
+                                                <label  class="col-form-label">POLICE STN LONG N</label>
+                                                <input  type="text" name="police_stn_long_n"  ng-model="police_stn_long_n"   class="form-control" autocomplete="on" required>
+                                            </div>
+										</div>
+										<div class="col-xl-3 col-lg-3 col-md-3 ">
+											<div class="form-group">
+                                                <label  class="col-form-label">POPULATION</label>
+                                                <input  type="text" name="population"  ng-model="population"  class="form-control" autocomplete="on" required>
+                                            </div>
+										</div>	
+										</div>
+										
+										
+										
+										
+										<div class="row" >
+										
+										
+										<div class="col-xl-3 col-lg-3 col-md-3 ">
+											<div class="form-group">
+                                                <label  class="col-form-label">DISTRICT ID</label>
+                                               <input  type="text" name="district_id"  ng-model="district_id" class="form-control" autocomplete="on" required>
+                                              
+                                            </div>
+										</div>
+										<div class="col-xl-3 col-lg-3 col-md-3 ">
+												<div class="form-group">
+	                                                <label  class="col-form-label">RANGE ID</label>
+	                                                <input  type="text" name="range_id"  ng-model="range_id"   class="form-control" autocomplete="on" required>
+	                                            </div>
+											</div>
+											
+											<div class="col-xl-3 col-lg-3 col-md-3 ">
+											<div class="form-group">
+                                                <label  class="col-form-label">Level 0</label>
+                                                <input  type="text" name="Level0" ng-model="Level0"   class="form-control" autocomplete="on" required>
+                                            </div>
+										</div>
+										<div class="col-xl-3 col-lg-3 col-md-3 ">
+											<div class="form-group">
+                                                <label  class="col-form-label">Level 1</label>
+                                                <input  type="text" name="Level1"  ng-model="Level1"   class="form-control" autocomplete="on" required>
+                                            </div>
+										</div>
+										</div>
+									
+									
+									<div class="row" >
+										
+										
+										<div class="col-xl-3 col-lg-3 col-md-3 ">
+											<div class="form-group">
+                                                <label  class="col-form-label">Level 2</label>
+                                               <input  type="text" name="Level2"  ng-model="Level2"     class="form-control" autocomplete="on" required>
+                                              
+                                            </div>
+										</div>
+										<div class="col-xl-3 col-lg-3 col-md-3 ">
+												<div class="form-group">
+	                                                <label  class="col-form-label">Level 3</label>
+	                                                <input  type="text" name="Level3"  ng-model="Level3"     class="form-control" autocomplete="on" required>
+	                                            </div>
+											</div>
+										<div class="col-xl-3 col-lg-3 col-md-3 ">
+												<div class="form-group">
+	                                                <label  class="col-form-label">BRANCH</label>
+	                                                <input  type="text" name="branch"  ng-model="branch"     class="form-control" autocomplete="on" required>
+	                                            </div>
+											</div>	
+										</div>
+										
+										
+									
+									<div style="text-align:center;">
+										
+										
+										<div>
+											<div class="form-group">
+											 <input type="submit"   ng-if="flag === 0"  id="save"   style="background: #307ECC; border: #307ECC;color:white" value="Add Unit"  class="btn " > 
+                                                  <input type="submit"  ng-if="flag === 1"  id="update" style="background: #307ECC; border: #307ECC;color:white"  value="Update Unit"  class="btn " >
+                                               <input type="button"  ng-click="clearForm()" value="Cancel" style="background: #bdb5b5; border: #bdb5b5;" class="btn btn-secondary">
+                                            </div>
+										</div>	
+																												
+									</div>
+									
+										<div style="text-align:center;">
+										
+										
+										<div>
+											<div class="form-group">
+											 <input  type="text" name="search" style="width: 24%;" placeholder = "Search..." ng-model="search"  class="form-control" autocomplete="on" required>
+											</div>
+											</div>
+											</div>
+											
+											<div id="loader" style="text-align:center;">
+												<div class="lds-ring"><div></div><div></div><div></div><div></div></div>
+											</div>
+											
+									
+									
+									
+									<div class="row">
+									<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+									<div class="card" style = "overflow: auto;">
+                                <h5 class="card-header">Master Unit R1 Table</h5>
+                                <div class="card-body">
+                                    <table class="table table-striped">
+                                        <thead>
+                                            <tr>
+                                                <th scope="col">id</th>
+                                                <th scope="col">srno</th>
+                                               
+                                                <th scope="col">ps_code</th>
+                                                <th scope="col">zncode</th>
+                                                 <th scope="col">rng_code</th>
+                                                <th scope="col">ps_name</th>
+                                                 <th scope="col">dtename</th>
+                                                 <th scope="col">ps_cctns</th>
+                                                 <th scope="col">dg_code</th>
+                                                 <th scope="col">cp_sp_rpf</th>
+                                                 <th scope="col">cityrange_n</th>
+                                                 <th scope="col">zone_n</th>
+                                                 <th scope="col">JURISDICTION</th>
+                                                 <th scope="col">police_stn_lat</th>
+                                                 <th scope="col">police_stn_long</th>
+                                                 <th scope="col">range_cent_lat</th>
+                                                 <th scope="col">range_cent_long</th>
+                                                 <th scope="col">dist_cent_lat</th>
+                                                 <th scope="col">dist_cent_long</th>
+                                                 <th scope="col">police_stn_lat_n</th>
+                                                 <th scope="col">police_stn_long_n</th>
+                                                 <th scope="col">population</th>
+                                                 <th scope="col">district_id</th>
+                                                 <th scope="col">range_id</th>
+                                                 <th scope="col">Level0</th>
+                                                 <th scope="col">Level1</th>
+                                                 <th scope="col">Level2</th>
+                                                 <th scope="col">Level3</th>
+                                                 <th scope="col">branch</th>
+                                                 <th scope="col">Update</th>
+                                                 <th scope="col">Delete</th>
+                                                 
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr ng-repeat ="data in RoneDataObj | filter : search">
+                                               
+                                                <td>{{data.id}}</td>
+                                                
+                                                <td>{{data.srno}}</td>
+                                                <td>{{data.ps_code}}</td>
+                                                <td>{{data.zncode}}</td>
+                                                <td>{{data.rng_code }}</td>
+                                                <td>{{data.ps_name }}</td>
+                                                <td>{{data.dtename }}</td>
+                                                <td>{{data.ps_cctns }}</td>
+                                                <td>{{data.dg_code }}</td>
+                                                <td>{{data.cp_sp_rpf }}</td>
+                                                <td>{{data.cityrange_n }}</td>
+                                                <td>{{data.zone_n }}</td>
+                                                <td>{{data.jurisdiction }}</td>
+                                                 <td>{{data.police_stn_lat }}</td>
+                                                <td>{{data.police_stn_long }}</td>
+                                                <td>{{data.range_cent_lat }}</td>
+                                                <td>{{data.range_cent_long }}</td>
+                                                <td>{{data.dist_cent_lat }}</td>
+                                                <td>{{data.dist_cent_long }}</td>
+                                                <td>{{data.police_stn_lat_n }}</td>
+                                               <td>{{data.police_stn_long_n }}</td>
+                                                <td>{{data.population }}</td>
+                                                 <td>{{data.district_id }}</td>
+                                                <td>{{data.range_id }}</td>
+                                                 <td>{{data.level0 }}</td>
+                                                   <td>{{data.level1 }}</td>                  
+                                                   <td>{{data.level2 }}</td>                   
+                                                   <td>{{data.level3 }}</td>
+                                                     <td>{{data.branch }}</td> 
+                                                                          
+                                                  
+                                                <td> <input type="button"  value="Edit" style="background: #307ECC; border: #307ECC;color:white" class="btn " ng-click="updateRoneRecord(data.id)" > </td>
+                                                <td> <input type="button"  value="Delete"  class="btn btn-danger"  ng-click="deleteRoneRecordById(data.id)" > </td>
+                                            </tr>
+                                            
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            </div>
+									</div>
+									
+									</form>
+								</div>
+							</div>							
+						</div>						
+					</div>
+				</div>

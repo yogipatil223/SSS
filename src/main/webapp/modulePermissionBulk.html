@@ -1,0 +1,288 @@
+<div class="container-fluid dashboard-content ">
+					<!-- ============================================================== -->
+					<!-- pageheader  -->
+					<!-- ============================================================== -->
+					<div class="row">
+						<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+							<div class="page-header">
+								<label class="pageheader-title" style="font-size: 16px;font-weight: bold;color:white;">Module Permission Bulk
+								</label>															
+							</div>
+						</div>
+					</div>
+					<!-- ============================================================== -->
+					<!-- end pageheader  -->
+					<!-- ============================================================== -->
+					<div class="ecommerce-widget">
+
+						<div class="row">
+							
+							
+						</div>
+						<div class="row">
+							<!-- ============================================================== -->
+
+							<!-- ============================================================== -->
+
+							<!-- recent orders  -->
+							<!-- ============================================================== -->
+							<div class="col-xl-12 col-lg-12 col-md-6 col-sm-12 col-12">
+								<div class="card" style = "padding : 30px;" >
+								 <form ng-submit="saveModpermission()">
+								 
+								 <div class="row" >
+									
+										
+										<div class="col-xl-3 col-lg-3 col-md-3 ">
+											<div class="form-group">
+                                                <label  class="col-form-label ">Branches:</label>
+                                                <!-- <input type="text" name="username" ng-model="username" textaccept capitalize class="form-control"> -->
+                                                <select  name="branch" ng-model="branch"  ng-change="onChangeBranch()" class="form-control" ng-options="branches.branch as branches.branch for branches in branchObj " >
+                                                <option value="">All </option>
+                                                </select>
+                                            </div>
+										</div>
+										<div class="col-xl-3 col-lg-3 col-md-3 ">
+											<div class="form-group">
+                                                <label  class="col-form-label ">Commissionerate/Ranges:</label>
+                                               <!--  <input  type="text" name="sevarthnum"  ng-model="sevarthnum" class="form-control"> -->
+                                                <select  name="cityRange" ng-change="onChangeCityRange()" ng-disabled="branch != 'Commissionerate' &&  branch != 'Range'"  ng-model="cityRange" class="form-control" ng-options="cityRanges.level1  as cityRanges.cityrange_n for cityRanges in cityRangeObj " >
+                                                 <option value="">All </option></select>
+                                           
+                                            </div>
+										</div>
+										
+										<div class="col-xl-3 col-lg-3 col-md-3 ">
+											<div class="form-group">
+                                                <label  class="col-form-label ">District/Zone:</label>
+                                               <!--  <input  type="text" name="mobile_num" ng-model="mobile_num"  numbers-only class="form-control"> -->
+                                                <select  class="form-control" id="hidedist" ><option value="">All</option></select>
+                                               <select  ng-if="branch == 'Commissionerate'" id="distZone"  ng-change="onChangeDistZone()"  name="distZone" ng-model="distZone" class="form-control" ng-options="distZones.level2  as distZones.zone_n for distZones in distZoneObj "><option value="">All </option></select>
+                                                <select ng-if="branch== 'Range'" ng-change="onChangeDistZone()"  id="distZone" name="distZone" ng-model="distZone" class="form-control" id="distZone" ng-options="distZones.level2  as distZones.dtename for distZones in distZoneObj"><option value="">All </option></select>
+                                            </div>
+										</div>
+										<div class="col-xl-3 col-lg-3 col-md-3 ">
+											<div class="form-group">
+                                                <label  class="col-form-label ">Police Stations/ offices:</label>
+                                               <!--  <input  type="text" name="mobile_num" ng-model="mobile_num"  numbers-only class="form-control"> -->
+                                              <select  name="ps_station" ng-model="ps_station" class="form-control" ng-options="policeStations.level3  as policeStations.ps_name for policeStations in policeStationObj" >
+                                              <option value="">All </option>
+                                              </select>
+                                            </div>
+										</div>
+										
+										
+									</div>
+								 
+								 
+								 
+								 <div class="row">
+								 <div class="col-xl-3 col-lg-3 col-md-3 ">
+											<div class="form-group">
+                                                <label  class="col-form-label required">Rank:</label>                                               
+                                                <select  name="rank" ng-model="rank"  ng-change="getMaxRankValue()"  class="form-control" ng-options="ranks.rank as ranks.rank for ranks in rankObj | orderBy:'rank'"  required>
+                                                <option value="">- - Select Rank - - </option>
+                                                </select>
+                                            </div>
+										</div>
+									<div class="col-xl-3 col-lg-3 col-md-3 ">
+											<div class="form-group">
+                                                <label  class="col-form-label required">Select Module:</label>
+                                                <!-- <input type="text" name="username" ng-model="username" textaccept capitalize class="form-control"> -->
+                                                <select  name="moduleid" ng-model="moduleid"  ng-change="getDataByModId()"  class="form-control" ng-options="modules.module_id as modules.module_name for modules in moduleDataObj " required>
+                                                <option value="">- - Select Module - -</option>
+                                                </select>
+                                            </div>
+										</div>
+								 </div>
+								<div class="row" >
+								<div class="col-xl-3 col-lg-3 col-md-3 ">
+											<div class="form-group">
+                                                <label  class="col-form-label" style="font-weight: bold;">Assign Permissions</label>
+                                              
+                                            </div>
+										</div>
+								</div>
+																	
+									<div class="row" style="margin-bottom: 20px;">
+									<div id="dataentry" class="col-xl-2 col-lg-2 col-md-2 ">
+											<div class="form-group">
+                                                <label  class="col-form-label">Data Entry</label>
+                                                 <input type="checkbox" style="margin-left:10px;"  name="dataentry" ng-model="dataentry"   > 
+                                             
+                                            </div>
+										</div>
+										<div id="validation" style="display:none" class="col-xl-2 col-lg-2 col-md-2 ">
+											<div class="form-group">
+                                                <label  class="col-form-label">Validation</label>
+                                                 <input type="checkbox"  style="margin-left:10px;" name="validation" ng-model="validation"   > 
+                                             
+                                            </div>
+										</div>
+										<div id="view" class="col-xl-2 col-lg-2 col-md-2 ">
+											<div class="form-group">
+                                                <label  class="col-form-label">View Report</label>
+                                                 <input type="checkbox"  style="margin-left:10px;"  name="view" ng-model="view"  > 
+                                             
+                                            </div>
+										</div>
+										<div id="deskOfficer" class="col-xl-2 col-lg-2 col-md-2 ">
+											<div class="form-group">
+                                                <label  class="col-form-label">Desk Officer</label>
+                                                 <input type="checkbox"  style="margin-left:10px;"  name="deskOfficer" ng-model="deskOfficer"  > 
+                                             
+                                            </div>
+										</div>
+										<div  id="gisViewer" class="col-xl-2 col-lg-2 col-md-2 ">
+											<div class="form-group">
+                                                <label  class="col-form-label">GIS Viewer</label>
+                                                 <input type="checkbox"  style="margin-left:10px;" id="gisViewer" name="gisViewer" ng-model="gisViewer"  > 
+                                             
+                                            </div>
+										</div>
+										
+									</div>
+									
+									<div style="text-align:center;" >
+										
+										
+										<div >
+											<div class="form-group">
+											   <input type="submit"   id="save" style="background: #307ECC; border: #307ECC;color:white"  value="Submit"  class="btn " autocomplete="off"> 
+                                                <input type="button"  ng-click="searchUsersByRankBranchWise()" value="Search" style="background: #307ECC; border: #307ECC;color:white"  class="btn " autocomplete="off">
+                                                 <input type="button"  ng-click="clearForm()" value="Cancel" style="background: #bdb5b5; border: #bdb5b5;"  class="btn btn-secondary" autocomplete="off">
+                                            </div>
+										</div>	
+																												
+									</div>
+									</form>
+									
+								<!-- 	------------------   updated records  ------------------------- -->
+									<div id="updatedData">
+									<div id="dvExcelData">
+									<div class="row">
+									<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+									<div class="card">
+                                <h5 class="card-header">Module Permission Data Table</h5>
+                                <div class="card-body">
+                                    <table class="table table-striped">
+                                        <thead>
+                                            <tr>
+                                                <th scope="col">Sr.no.</th>
+                                                <th scope="col">Sevarth Number</th>
+                                                <th scope="col">Module Name</th>
+                                                <th scope="col">View Report</th>
+                                                <!-- <th scope="col">Validate</th> -->
+                                                <th scope="col">Data Entry</th>
+                                                <th scope="col">Desk Officer</th>
+                                                <th scope="col">Gis View</th>
+                                                
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr ng-repeat ="modulePerm in modPermissionObj">
+                                                <th scope="row">{{$index+1}}</th>
+                                                <td>{{modulePerm.usrbean.sevarth_no}}</td>
+                                                <td>{{modulePerm.bean.module_name}}</td>
+                                                <td>{{modulePerm.per_view}}</td>
+                                               <!--  <td>{{modulePerm.per_validate}}</td> -->
+                                                <td>{{modulePerm.per_dataentry}}</td>
+                                                 <td>{{modulePerm.per_desk}}</td>
+                                                  <td>{{modulePerm.per_gis}}</td>
+                                               
+                                              
+                                            </tr>
+                                            
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            </div>
+									</div>
+									</div>
+									
+                                                     
+                                                     <div >
+										<div >
+											<div class="form-group" style="text-align: center;" >
+                                              
+                                                  
+             <input type="button"   id="save" style="background: #307ECC; border: #307ECC;color:white" ng-click='printDiv()' id="print" value="Print"  class="btn " autocomplete="off"> 
+                                                 
+                                            
+                                            </div>
+										</div>
+																												
+									</div>
+									</div>
+									
+							<!-- 	----------------------  filterd record------------------------	 -->
+									<div id="filterData">
+									<div id="dvExcelData1">
+									<div class="row">
+									<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+									<div class="card">
+                                <h5 class="card-header">Filtered Users Data Table</h5>
+                                <div class="card-body">
+                                    <table class="table table-striped">
+                                        <thead>
+                                            <tr>
+                                                <th scope="col">Sr.no.</th>
+                                                <th scope="col">Sevarth Number</th>
+                                                <th scope="col">Module Name</th>
+                                                <th scope="col">View</th>
+                                                <!-- <th scope="col">Validate</th> -->
+                                                <th scope="col">Data Entry</th>
+                                                <th scope="col">Desk Officer</th>
+                                                <th scope="col">Gis View</th>
+                                                
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr id="{{$index+1}}" ng-repeat ="users in userInfoFilterObj">
+                                                <th scope="row">{{$index+1}}</th>
+                                                <td>{{users.sevarth_no}}</td>
+                                                <td id="userId{{$index+1}}" style="display:none">{{users.usrid}}</td>
+                                                <td><select  name="moduleid" id="moduleid{{$index+1}}" ng-model="moddid" ng-change="getDataByModId()"  class="form-control" ng-options="modules.module_id as modules.module_name for modules in moduleDataObj " >
+                                                <option value="">- - Select Module - -</option>
+                                                </select></td>
+                                                
+                                                <td><input type="checkbox"  style="margin-left:10px;" id="view{{$index+1}}" name="view" /> </td>
+                                               <!--  <td>{{modulePerm.per_validate}}</td> -->
+                                                <td> <input type="checkbox" style="margin-left:10px;" id="dataentry{{$index+1}}"  name="dataentry" /> </td>
+                                                 <td> <input type="checkbox"  style="margin-left:10px;"  id="deskOfficer{{$index+1}}" name="deskOfficer" /> </td>
+                                                  <td> <input type="checkbox"  style="margin-left:10px;" id="gisViewer{{$index+1}}" name="gisViewer" /> </td>
+                                               
+                                              
+                                            </tr>
+                                            
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            </div>
+									</div>
+									</div>
+									
+                                                     
+                                                     <div >
+										<div >
+											<div class="form-group" style="text-align: center;" >
+                                              
+                                                  
+             <input type="button"   id="save" style="background: #307ECC; border: #307ECC;color:white" ng-click="updateUsersBySelecting()" id="print" value="Submit"  class="btn " autocomplete="off"> 
+                                                 
+                                            
+                                            </div>
+										</div>
+																												
+									</div>
+									
+									</div>
+                                                     
+                                                     
+								</div>
+							</div>							
+						</div>						
+					</div>
+				</div>
